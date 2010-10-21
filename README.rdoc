@@ -1,6 +1,6 @@
-= dynector
+= dynectastic
 
-Description goes here.
+A wrapper for Dynect REST API. Work in progress!
 
 == Note on Patches/Pull Requests
  
