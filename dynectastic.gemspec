@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
   s.date = %q{2010-10-24}
-  s.description = %q{BLABLABLA}
+  s.description = %q{More or less complete set of tools for managing your Dynect zones, records and nodes via REST API.}
   s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "CHANGES.rdoc",
      "Gemfile",
      "Gemfile.lock",
      "LICENSE",
@@ -27,6 +28,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "dynectastic.gemspec",
      "lib/dynectastic.rb",
+     "lib/dynectastic/error_translator.rb",
      "lib/dynectastic/errors.rb",
      "lib/dynectastic/factories/node_factory.rb",
      "lib/dynectastic/factories/record_factory.rb",
@@ -48,7 +50,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{BLABLABLA}
+  s.summary = %q{Neat wrapper for Dynect REST API.}
   s.test_files = [
     "test/helper.rb",
      "test/test_node_factory.rb",
