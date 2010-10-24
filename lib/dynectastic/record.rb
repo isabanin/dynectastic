@@ -16,11 +16,11 @@ module Dynectastic
   private
   
     def update(payload)
-      put("/#{ entity_path }/#{ record_id }/", :body => payload)
+      put("#{ entity_path }/#{ record_id }/", :body => payload)
     end
     
     def create(payload)
-      post("/#{ entity_path }/", :body => payload)
+      post("#{ entity_path }/", :body => payload)
     end
   
     def entity_path
