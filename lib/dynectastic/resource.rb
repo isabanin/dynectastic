@@ -4,13 +4,10 @@ module Dynectastic
     
     include HTTParty
     
-    VERSION = '0.1.2'
-    
     attr_reader :session, :factory
     
-    base_uri "https://api2.dynect.net/REST"
-    headers  "Content-Type" => "application/json"
-    #debug_output $stdout
+    base_uri API_BASE
+    headers  { "Content-Type" => "application/json" }
     
     def initialize(session, factory=nil)
       @session = session
@@ -41,29 +38,37 @@ module Dynectastic
     
   private
   
+    def default_headers
+      self.class.default_options[:headers]
+    end
+  
     def request(*args)
       method, path, options = args.shift, args.shift, args.last
-      
-      if session
-        options ||= {}
-        options.merge!(:headers => self.class.default_options[:headers].merge({ "Auth-Token" => session.token}))
+      options ||= {}
+      prepare_options(options)
+      process_response(self.class.send(method, path, options))
+    end
+    
+    def prepare_options(options)
+      if session        
+        options = options.merge!(:headers => default_headers.merge({ "Auth-Token" => session.token}))
       end
       
       if options[:body].kind_of?(Hash)
         options[:body] = options[:body].to_json
       end
-      
-      response = self.class.send(method, path, options)
-      
+    end
+    
+    def process_response(response)
       if response['status'] == 'success'
         response['data']
       else
-        dynect_messages_to_exceptions(response['msgs'])
+        convert_dynect_messages_to_exceptions(response['msgs'])
         response
       end
     end
     
-    def dynect_messages_to_exceptions(messages)
+    def convert_dynect_messages_to_exceptions(messages)
       messages.each do |msg|
         if msg['LVL'] == 'ERROR'
           raise ErrorTranslator.translate_to_exception(msg)

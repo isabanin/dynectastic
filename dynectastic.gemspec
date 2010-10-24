@@ -41,7 +41,6 @@ Gem::Specification.new do |s|
      "test/test_node_factory.rb",
      "test/test_record.rb",
      "test/test_record_factory.rb",
-     "test/test_resource.rb",
      "test/test_session.rb",
      "test/test_zone.rb",
      "test/test_zone_factory.rb"
@@ -56,7 +55,6 @@ Gem::Specification.new do |s|
      "test/test_node_factory.rb",
      "test/test_record.rb",
      "test/test_record_factory.rb",
-     "test/test_resource.rb",
      "test/test_session.rb",
      "test/test_zone.rb",
      "test/test_zone_factory.rb"
@@ -68,14 +66,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httparty>, [">= 0.6.1"])
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, [">= 0.6.1"])
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
     s.add_dependency(%q<httparty>, [">= 0.6.1"])
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 
