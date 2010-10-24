@@ -4,13 +4,14 @@ module Dynectastic
     
     include HTTParty
     
-    attr_reader :session
+    attr_reader :session, :factory
     
     base_uri "https://api2.dynect.net/REST"
     headers  "Content-Type" => "application/json"
     
-    def initialize(session)
-      @session = session      
+    def initialize(session, factory=nil)
+      @session = session
+      @factory = factory
     end
     
     def get(*args)

@@ -19,20 +19,21 @@ module Dynectastic
     record_types :aaaa, :any, :a, :cname, :dnskey, :ds, :key, :loc, :mx, :ns, :ptr, :rp, :soa, :srv, :txt 
     
     def build(attributes)
-      record = Dynectastic::Record.new(session)
+      record = Dynectastic::Record.new(session, self)
+      record.type = record_type
       record.attributes = attributes
       record
     end
     
     def find_by_id(id, options={})
-      build get("/#{ entity_name }/#{ options[:in] }/#{ id }")
+      build get("/#{ entity_name }/#{ options[:zone] }/#{ options[:node] }/#{ id }")
     end
     
     def find_all(options={})
       records = []
-      get("/#{ entity_name }/#{ options[:in] }/").each do |something|
-        raise something.inspect
-        records << find(something)
+      get("/#{ entity_name }/#{ options[:zone] }/#{ options[:node] }/").each do |record_url|
+        record_id = record_url.split("/").last
+        records << find_by_id(record_id, options)
       end
       records
     end
