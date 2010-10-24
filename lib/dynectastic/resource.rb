@@ -10,6 +10,7 @@ module Dynectastic
     
     base_uri "https://api2.dynect.net/REST"
     headers  "Content-Type" => "application/json"
+    #debug_output $stdout
     
     def initialize(session, factory=nil)
       @session = session

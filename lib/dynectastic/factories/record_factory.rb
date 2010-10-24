@@ -20,7 +20,7 @@ module Dynectastic
     
     def build(attributes)
       record = Dynectastic::Record.new(session, self)
-      record.type = record_type
+      record.type       = record_type
       record.attributes = attributes
       record
     end

@@ -20,7 +20,7 @@ class TestRecord < Test::Unit::TestCase
         :rdata => { :cname => "something.dynectastictests.com" }
       )
     end
-    
+
     context "creating" do
       
       should "save" do        
@@ -29,6 +29,25 @@ class TestRecord < Test::Unit::TestCase
       
       teardown do
         @zone.destroy
+      end
+      
+    end
+
+    context "updating" do
+      
+      setup do
+        @record.save
+        @zone.publish
+      end
+      
+      teardown do 
+        @zone.destroy
+      end
+      
+      should "change rdata" do
+        @record.rdata['cname'] = "something_else.dynectastictests.com"
+        assert @record.save
+        assert_equal "something_else.dynectastictests.com.", @record.rdata['cname']
       end
       
     end
