@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "dynectastic"
-    gem.summary = "BLABLABLA"
-    gem.description = "BLABLABLA"
+    gem.summary = "Neat wrapper for Dynect REST API."
+    gem.description = "More or less complete set of tools for managing your Dynect zones, records and nodes via REST API."
     gem.email = "ilya.sabanin@gmail.com"
     gem.homepage = "http://github.com/iSabanin/dynectastic"
     gem.authors = ["Ilya Sabanin"]

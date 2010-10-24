@@ -10,6 +10,12 @@ class TestSession < Test::Unit::TestCase
       assert session.token.kind_of? String
     end
     
+    should "raise proper exception when authentication fails" do
+      assert_raises Dynectastic::AuthenticationError do
+        Dynectastic::Session.new("bla", "ble", "blu")
+      end
+    end
+    
   end
   
 end

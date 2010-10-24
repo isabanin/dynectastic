@@ -66,7 +66,7 @@ module Dynectastic
     def dynect_messages_to_exceptions(messages)
       messages.each do |msg|
         if msg['LVL'] == 'ERROR'
-          raise DynectError.new(msg['INFO'], msg['SOURCE'], msg['ERR_CD'])
+          raise ErrorTranslator.translate_to_exception(msg)
         end
       end
     end

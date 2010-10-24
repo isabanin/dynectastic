@@ -1,6 +1,81 @@
 = dynectastic
 
-A wrapper for Dynect REST API. Work in progress!
+Dynectastic is a nice little wrapper for Dynect's REST API. Use it to manage Zones, Records and Nodes on your Dynect account.
+
+== Installation
+
+ gem install dynectastic
+ 
+== Requirements
+
+HTTParty 0.6.1
+
+== Usage
+
+First you need to create new Dynect session:
+
+ dynect = Dynectastic.session("dynect_customer_name", "dynect_login", "dynect_password")
+ 
+Make sure to create a separate login/password pair for your API client or it will interfere with your web interface browsing.
+
+Now you can use this "dynect" object to call various API methods.
+
+== Zone examples
+
+With Dynectastic you can find, create, freeze, unfreeze, publish and destroy zones:
+ 
+ dynect.zones.build(
+   :name    => "newfancyzone.com",
+   :contact => "stalin@communismwilleventuallywin.com",
+   :ttl     => 1800
+ ).save
+ 
+ dynect.zones.find_all
+ 
+ zone = dynect.zones.find_by_name("newfancyzone.com")
+ 
+ zone.freeze
+ zone.frozen?
+ zone.unfreeze
+ 
+ zone.publish
+ zone.published?
+ 
+ zone.destroy
+ 
+Don't forget that you have to publish a zone every time you make any changes to it (for example when you add new record).
+
+== Record examples
+
+For now it's possible to find, create, update and delete records:
+
+ dynect.records.cname.build(
+   :zone => "newfancyzone.com",
+   :node => "new_node.newfancyzone.com", # will be created automatically
+   :ttl  => 1800,
+   :rdata => {
+     :cname => "something.somewhere.com"
+   }
+ ).save
+ 
+ dynect.records.cname.find_all(:zone => "newfancyzone.com", :node => "new_node.newfancyzone.com")
+ 
+ record = dynect.records.cname.find_by_id(0, :zone => "newfancyzone.com", :node => "new_node.newfancyzone.com")
+ 
+ record.rdata['cname'] = "some_other_thing.somewhere.com"
+ record.save
+ 
+ record.destroy
+ 
+Dynect will automatically create Node for your record if it's missing.
+
+You can use all other record types instead of "cname" such as "txt" or "a" or anything else.
+
+== Node examples
+
+The API only allow us to delete nodes, nothing else:
+
+ dynect.nodes.destroy("newfancyzone.com", "new_node.newfancyzone.com")
 
 == Note on Patches/Pull Requests
  

@@ -14,4 +14,12 @@ module Dynectastic
     
   end
   
+  class AuthenticationError < DynectError
+    
+    def message
+      "Credentials you entered did not match those in Dynect's database."
+    end
+    
+  end
+  
 end

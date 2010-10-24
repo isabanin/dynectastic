@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 require "dynectastic/errors"
+require "dynectastic/error_translator"
 require "dynectastic/resource"
 require "dynectastic/session"
 require "dynectastic/zone"
