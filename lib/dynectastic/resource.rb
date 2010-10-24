@@ -4,6 +4,8 @@ module Dynectastic
     
     include HTTParty
     
+    VERSION = '0.1.2'
+    
     attr_reader :session, :factory
     
     base_uri "https://api2.dynect.net/REST"

@@ -21,7 +21,7 @@ module Dynectastic
     end
     
     def nodes
-      Dynectastic::Node
+      Dynectastic::NodeFactory.new(self)
     end
     
     def records

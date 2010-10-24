@@ -6,6 +6,7 @@ require "dynectastic/session"
 require "dynectastic/zone"
 require "dynectastic/record"
 require "dynectastic/factories/zone_factory"
+require "dynectastic/factories/node_factory"
 require "dynectastic/factories/record_factory"
 
 module Dynectastic

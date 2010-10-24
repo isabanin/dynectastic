@@ -1,8 +1,8 @@
 require 'helper'
 
-class TestRecord < Test::Unit::TestCase
+class TestNodeFactory < Test::Unit::TestCase
   
-  context "Record" do
+  context "NodeFactory" do
     
     setup do
       @dynect = Dynectastic.session(DYNECT_CUST_NAME, DYNECT_USER_NAME, DYNECT_USER_PASS)
@@ -12,25 +12,22 @@ class TestRecord < Test::Unit::TestCase
         :ttl     => 1800
       )
       @zone.save
-      
+
       @record = @dynect.records.cname.build(
         :zone => "dynectastictests.com",
-        :node => "new_node.dynectastictests.com",
+        :node => "ilya.dynectastictests.com",
         :ttl => 0,
         :rdata => { :cname => "something.dynectastictests.com" }
       )
+      @record.save
     end
     
-    context "creating" do
-      
-      should "save" do        
-        assert @record.save
-      end
-      
-      teardown do
-        @zone.destroy
-      end
-      
+    teardown do
+      @zone.destroy
+    end
+    
+    should "delete" do
+      @dynect.nodes.destroy("dynectastictests.com", "ilya.dynectastictests.com")
     end
     
   end

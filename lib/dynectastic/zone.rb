@@ -11,30 +11,30 @@ module Dynectastic
         'serial_style' => serial,
         'ttl'          => ttl
       }
-      post(entity_path, :body => payload)
+      post("#{ factory.entity_name }/#{ name }", :body => payload)
     end
     
     def publish
-      if put(entity_path, :body => { :publish => true } )
+      if factory.publish(name)
         @published = true
       end
     end
     
     def freeze
-      if put(entity_path, :body => { :freeze => true } )
+      if factory.freeze(name)
         @frozen = true
       end
     end
     
     def unfreeze
-      if put(entity_path, :body => { :thaw => true } )
+      if factory.unfreeze(name)
         @frozen = false
         true
       end
     end
     
     def destroy
-      delete(entity_path)
+      factory.destroy(name)
     end
     
     def published?
@@ -43,12 +43,6 @@ module Dynectastic
     
     def frozen?
       @frozen
-    end
-  
-  private
-  
-    def entity_path
-      "/Zone/#{ name }"
     end
     
   end
