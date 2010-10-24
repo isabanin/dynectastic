@@ -2,6 +2,8 @@
 
 Dynectastic is a nice little wrapper for Dynect's REST API. Use it to manage Zones, Records and Nodes on your Dynect account.
 
+This gem is heavily used in Beanstalk[http://beanstalkapp.com] to perform hundreds of requests every day.
+
 == Installation
 
  gem install dynectastic
