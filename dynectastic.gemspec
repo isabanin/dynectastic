@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2010-10-24}
+  s.date = %q{2010-10-25}
   s.description = %q{More or less complete set of tools for managing your Dynect zones, records and nodes via REST API.}
   s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
