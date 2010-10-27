@@ -6,7 +6,7 @@ module Dynectastic
   extend self
   
   VERSION  = '0.1.2'
-  API_BASE = 'https://api2.dynect.net/REST' 
+  API_BASE = 'https://api2.dynect.net'
   
   def session(customer_name, user_name, password)
     Session.new(customer_name, user_name, password)
