@@ -11,7 +11,7 @@ module Dynectastic
         :password      => password
       }.to_json
       
-      response     = post("/Session", :body => payload)
+      response     = post(entity_base, :body => payload)
       @token       = response['token']
       @api_version = response['version']
     end
@@ -26,6 +26,10 @@ module Dynectastic
     
     def records
       Dynectastic::RecordFactory.new(self)
+    end
+    
+    def entity_base
+      "/REST/Session"
     end
     
   end

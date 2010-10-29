@@ -26,16 +26,20 @@ module Dynectastic
     end
     
     def find_by_id(id, options={})
-      build get("/#{ entity_name }/#{ options[:zone] }/#{ options[:node] }/#{ id }")
+      build get("#{ entity_base }/#{ options[:zone] }/#{ options[:node] }/#{ id }")
     end
     
     def find_all(options={})
       records = []
-      get("/#{ entity_name }/#{ options[:zone] }/#{ options[:node] }/").each do |record_url|
+      get("#{ entity_base }/#{ options[:zone] }/#{ options[:node] }/").each do |record_url|
         record_id = record_url.split("/").last
         records << find_by_id(record_id, options)
       end
       records
+    end
+    
+    def entity_base
+      "/REST/#{ entity_name }"
     end
     
     def entity_name

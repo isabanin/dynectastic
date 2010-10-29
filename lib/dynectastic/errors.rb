@@ -22,4 +22,12 @@ module Dynectastic
     
   end
   
+  class SessionBusy < DynectError
+    
+    def message
+      "This session already has a job running. Try again later."
+    end
+    
+  end
+  
 end

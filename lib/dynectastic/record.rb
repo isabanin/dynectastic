@@ -24,7 +24,7 @@ module Dynectastic
     end
   
     def entity_path
-      "/#{ factory.entity_name }/#{ zone }/#{ node }"
+      "#{ factory.entity_base }/#{ zone }/#{ node }"
     end
     
   end

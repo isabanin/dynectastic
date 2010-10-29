@@ -9,12 +9,12 @@ module Dynectastic
     end
     
     def find_by_name(name=nil)
-      build api_parameters_to_attributes(get("#{ entity_name }/#{ name }/"))
+      build api_parameters_to_attributes(get("#{ entity_base }/#{ name }/"))
     end
     
     def find_all
       zones = []
-      get("#{ entity_name }/").each do |full_zone_path|
+      get("#{ entity_base }/").each do |full_zone_path|
         zone_name = full_zone_path.split('/').last
         zones << find_by_name(zone_name)
       end
@@ -22,23 +22,23 @@ module Dynectastic
     end
     
     def publish(name)
-      put("#{ entity_name }/#{ name }", :body => { :publish => true } )
+      put("#{ entity_base }/#{ name }", :body => { :publish => true } )
     end
     
     def freeze(name)
-      put("#{ entity_name }/#{ name }", :body => { :freeze => true } )
+      put("#{ entity_base }/#{ name }", :body => { :freeze => true } )
     end
     
     def unfreeze(name)
-      put("#{ entity_name }/#{ name }", :body => { :thaw => true } )
+      put("#{ entity_base }/#{ name }", :body => { :thaw => true } )
     end
     
     def destroy(name)
-      delete("#{ entity_name }/#{ name }")
+      delete("#{ entity_base }/#{ name }")
     end
     
-    def entity_name
-      "/Zone"
+    def entity_base
+      "/REST/Zone"
     end
     
   private

@@ -26,7 +26,7 @@ class TestRecord < Test::Unit::TestCase
       should "save" do        
         assert @record.save
       end
-      
+
       teardown do
         @zone.destroy
       end

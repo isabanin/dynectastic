@@ -6,8 +6,7 @@ class TestZone < Test::Unit::TestCase
     
     setup do
       @dynect = Dynectastic.session(DYNECT_CUST_NAME, DYNECT_USER_NAME, DYNECT_USER_PASS)
-      @factory = @dynect.zones
-      @zone = @factory.build(
+      @zone = @dynect.zones.build(
         :name    => "dynectastictests.com",
         :contact => "ilya@wildbit.com",
         :ttl     => 0

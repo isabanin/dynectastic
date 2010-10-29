@@ -11,7 +11,7 @@ module Dynectastic
         'serial_style' => serial,
         'ttl'          => ttl
       }
-      self.attributes = post("#{ factory.entity_name }/#{ name }", :body => payload)
+      self.attributes = post("#{ factory.entity_base }/#{ name }", :body => payload)
     end
     
     def publish

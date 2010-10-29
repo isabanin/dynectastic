@@ -6,8 +6,9 @@ module Dynectastic
     
     attr_reader :session, :factory
     
-    base_uri API_BASE
-    headers  "Content-Type" => "application/json"
+    base_uri     API_URL
+    headers      "Content-Type" => "application/json"
+    #debug_output $stdout
     
     def initialize(session, factory=nil)
       @session = session

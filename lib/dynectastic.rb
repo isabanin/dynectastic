@@ -5,8 +5,8 @@ module Dynectastic
   
   extend self
   
-  VERSION  = '0.1.2'
-  API_BASE = 'https://api2.dynect.net'
+  VERSION = '0.1.2'
+  API_URL = 'https://api2.dynect.net'
   
   def session(customer_name, user_name, password)
     Session.new(customer_name, user_name, password)
@@ -20,6 +20,7 @@ require "dynectastic/resource"
 require "dynectastic/session"
 require "dynectastic/zone"
 require "dynectastic/record"
+require "dynectastic/job"
 require "dynectastic/factories/zone_factory"
 require "dynectastic/factories/node_factory"
 require "dynectastic/factories/record_factory"
