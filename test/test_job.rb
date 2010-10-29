@@ -26,7 +26,7 @@ class TestJob < Test::Unit::TestCase
         :end_ts => end_ts.to_i 
       })
     end
-    
+
   end
   
 end

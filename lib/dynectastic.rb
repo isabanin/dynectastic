@@ -3,12 +3,10 @@ require 'json'
 
 module Dynectastic
   
-  extend self
-  
   VERSION = '0.1.2'
   API_URL = 'https://api2.dynect.net'
   
-  def session(customer_name, user_name, password)
+  def self.session(customer_name, user_name, password)
     Session.new(customer_name, user_name, password)
   end
   
