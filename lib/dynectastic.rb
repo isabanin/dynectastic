@@ -5,6 +5,7 @@ module Dynectastic
   
   VERSION = '0.1.2'
   API_URL = 'https://api2.dynect.net'
+  RETRIES = 5
   
   def self.session(customer_name, user_name, password)
     Session.new(customer_name, user_name, password)
@@ -14,6 +15,7 @@ end
 
 require "dynectastic/errors"
 require "dynectastic/error_translator"
+require "dynectastic/request"
 require "dynectastic/resource"
 require "dynectastic/session"
 require "dynectastic/zone"
