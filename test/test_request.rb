@@ -35,16 +35,16 @@ class TestRequest < Test::Unit::TestCase
         })
       end
       
-      should "return job" do
-        assert @request_result.kind_of?(Dynectastic::Job)
+      should "return false" do
+        assert_equal false, @request_result
       end
       
       should "flag resource with job_incomplete" do
-        assert @request_result.incomplete?
+        assert @long_running.last_request.job.incomplete?
       end
       
       should "memorize job_id" do
-        assert @request_result.id.kind_of?(Numeric)
+        assert @long_running.last_request.job.id.kind_of?(Numeric)
       end
       
       should "memorize response" do

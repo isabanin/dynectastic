@@ -17,12 +17,16 @@ module Dynectastic
     def publish
       if factory.publish(name)
         @published = true
+      else
+        job
       end
     end
     
     def freeze
       if factory.freeze(name)
         @frozen = true
+      else
+        job
       end
     end
     
@@ -30,6 +34,8 @@ module Dynectastic
       if factory.unfreeze(name)
         @frozen = false
         true
+      else
+        job
       end
     end
     

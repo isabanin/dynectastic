@@ -3,7 +3,7 @@ require 'json'
 
 module Dynectastic
   
-  VERSION = '0.1.2'
+  VERSION = '0.2.0'
   API_URL = 'https://api2.dynect.net'
   RETRIES = 5
   

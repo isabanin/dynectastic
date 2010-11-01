@@ -31,7 +31,7 @@ module Dynectastic
       rescue HTTParty::RedirectionTooDeep => e
         if e.response.body.include?("/REST/Job")
           memorize_response_data(e.response)
-          job
+          false
         else
           raise e
         end

@@ -1,6 +1,6 @@
 = dynectastic
 
-Dynectastic is a nice little wrapper for Dynect's REST API. Use it to manage Zones, Records and Nodes on your Dynect account.
+Dynectastic is a nice wrapper for Dynect's REST API. Use it to manage Zones, Records and Nodes on your Dynect account.
 
 == Installation
 
@@ -19,6 +19,34 @@ First you need to create new Dynect session:
 Make sure to create a separate login/password pair for your API client or it will interfere with your web interface browsing.
 
 Now you can use this "dynect" object to call various API methods.
+
+== Requests
+
+You can always access most recent request of a resource by calling last_request on it:
+
+ zone.freeze
+ zone.last_request # => #<Dynectastic::Request:...>
+ 
+Every request store it's response:
+
+ zone.last_request.response # => #<HTTParty::Response:...>
+
+== Jobs
+
+Every request to Dynect has a special Job assigned to it. You can access it like this:
+
+ zone.publish                    # => true
+ zone.last_request.job.id        # => 343245
+ zone.last_request.job.complete? # => true
+ 
+Sometimes a long running job can not be completed in time, so Dynectastic returns false as a result of your request:
+
+ zone.publish                    # => false
+ zone.last_request.job.id        # => 342626
+ zone.last_request.job.complete? # => false
+
+Since Dynect does not allow you to run several jobs simultaneously, sometimes your requests will return Dynectastic::SessionBusy exception.
+Luckily there is a built-in retry cycle for such exceptions: Dynectastic will sleep for a few seconds and retry your request 5 more times.
 
 == Zone examples
 

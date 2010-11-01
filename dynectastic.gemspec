@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dynectastic}
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2010-10-29}
+  s.date = %q{2010-11-01}
   s.description = %q{More or less complete set of tools for managing your Dynect zones, records and nodes via REST API.}
   s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
@@ -35,14 +35,16 @@ Gem::Specification.new do |s|
      "lib/dynectastic/factories/zone_factory.rb",
      "lib/dynectastic/job.rb",
      "lib/dynectastic/record.rb",
+     "lib/dynectastic/request.rb",
      "lib/dynectastic/resource.rb",
      "lib/dynectastic/session.rb",
      "lib/dynectastic/zone.rb",
      "test/helper.rb",
-     "test/test_job.rb",
      "test/test_node_factory.rb",
      "test/test_record.rb",
      "test/test_record_factory.rb",
+     "test/test_request.rb",
+     "test/test_resource.rb",
      "test/test_session.rb",
      "test/test_zone.rb",
      "test/test_zone_factory.rb"
@@ -54,10 +56,11 @@ Gem::Specification.new do |s|
   s.summary = %q{Neat wrapper for Dynect REST API.}
   s.test_files = [
     "test/helper.rb",
-     "test/test_job.rb",
      "test/test_node_factory.rb",
      "test/test_record.rb",
      "test/test_record_factory.rb",
+     "test/test_request.rb",
+     "test/test_resource.rb",
      "test/test_session.rb",
      "test/test_zone.rb",
      "test/test_zone_factory.rb"
