@@ -29,7 +29,7 @@ module Dynectastic
       begin
         process_response(self.class.send(method, path, options))
       rescue HTTParty::RedirectionTooDeep => e
-        if e.response.body.include?("/REST/Job")
+        if e.response['Location'].include?("/REST/Job")
           memorize_response_data(e.response)
           false
         else
@@ -93,7 +93,7 @@ module Dynectastic
     end
     
     def extract_job_id_from_response(response)
-      response.body.scan(/\/REST\/Job\/(\d+)/i).flatten.first.to_i
+      response['Location'].scan(/\/REST\/Job\/(\d+)/i).flatten.first.to_i
     end
     
     def increment_attempts
