@@ -4,6 +4,8 @@ module Dynectastic
     
     def destroy(zone, name)
       delete("#{ entity_base }/#{ zone }/#{ name }")
+    rescue DynectError
+      # already deleted?
     end
     
     def entity_base

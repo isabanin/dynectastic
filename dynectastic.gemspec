@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{dynectastic}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2010-11-04}
+  s.date = %q{2011-01-18}
   s.description = %q{More or less complete set of tools for managing your Dynect zones, records and nodes via REST API.}
   s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
