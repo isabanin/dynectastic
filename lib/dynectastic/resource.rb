@@ -26,8 +26,9 @@ module Dynectastic
       request(:delete, *args)
     end
     
-    def attributes=(hash)
-      hash.each_pair do |name, value|
+    def attributes=(smth)
+      return smth unless smth.kind_of?(Hash)
+      smth.each_pair do |name, value|
         instance_variable_set("@#{ name }", value)
       end
     end

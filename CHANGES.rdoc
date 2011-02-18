@@ -1,5 +1,9 @@
 = Changelog
 
+== 0.2.3
+
+* Fixed "undefined method `each_pair' for false:FalseClass" exception.
+
 == 0.2.2
 
 * Ignore Dynect errors when trying to delete a node. Most likely it's already deleted.
