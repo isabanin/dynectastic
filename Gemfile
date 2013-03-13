@@ -2,7 +2,7 @@
 source "http://rubygems.org"
 
 gem "httparty", ">= 0.5"
-gem "json", "~>1.4.6"
+gem "json"
 
 group :development do
   gem 'jeweler'

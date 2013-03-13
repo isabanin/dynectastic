@@ -5,6 +5,7 @@ module Dynectastic
     attr_reader :text, :source, :code
     
     def initialize(text, source, code)
+      super(text)
       @text, @source, @code = text, source, code      
     end
     
