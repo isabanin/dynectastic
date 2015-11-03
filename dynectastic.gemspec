@@ -61,14 +61,10 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_runtime_dependency(%q<httparty>, [">= 0.5"])
-      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, [">= 0.5"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
-      s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<httparty>, [">= 0.5"])
       s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
@@ -76,8 +72,5 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<httparty>, [">= 0.5"])
-    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
-
